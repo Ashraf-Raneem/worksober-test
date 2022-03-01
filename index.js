@@ -30,6 +30,13 @@ app.delete("/api/users/:id", (req, res) => {
   res.send(users);
 });
 
+// All other GET requests not handled before will return our React app
+app.get("*", (req, res) => {
+  res.sendFile(
+    path.resolve(__dirname, "../worksober-frontend/build", "index.html")
+  );
+});
+
 app.listen(port, () => {
   console.log(`Backend app listening on port ${port}`);
 });
