@@ -30,6 +30,9 @@ app.delete("/api/users/:id", (req, res) => {
   res.send(users);
 });
 
+// Have Node serve the files for our built React app
+app.use(express.static(path.resolve(__dirname, "../worksober-frontend/build")));
+
 // All other GET requests not handled before will return our React app
 app.get("*", (req, res) => {
   res.sendFile(
