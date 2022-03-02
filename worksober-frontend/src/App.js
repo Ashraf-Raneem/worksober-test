@@ -4,7 +4,7 @@ import "./assets/style.css";
 
 const App = () => {
   return (
-    <div>
+    <div className="app-container">
       <UserList />
     </div>
   );
