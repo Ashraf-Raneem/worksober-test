@@ -10,7 +10,7 @@ const UserList = ({ getUsers, user }) => {
   }, []);
 
   const { users, loading } = user;
-  console.log(users);
+
   return (
     <div className="block">
       <div className="block-head">
