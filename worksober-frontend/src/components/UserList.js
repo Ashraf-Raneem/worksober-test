@@ -50,7 +50,7 @@ const UserList = ({ getUsers, user }) => {
 
       <div className="user-list">{users && users.map((item) => <UserCard user={item} key={item._id} />)}</div>
 
-      <Modal isOpen={isOpen} style={customStyles}>
+      <Modal isOpen={isOpen} style={customStyles} ariaHideApp={false}>
         <div>
           <div className="modal-header">
             <h3>Add New Users</h3>

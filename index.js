@@ -2,11 +2,11 @@ var express = require("express");
 var UserData = require("./config/Data");
 var app = express();
 
-var cors = require('cors')
+var cors = require("cors");
 
 var port = 3000;
-var app = express()
-
+var app = express();
+app.use(express.json());
 let users = UserData;
 
 app.use(cors());
@@ -17,6 +17,16 @@ app.get("/", (req, res) => {
 
 app.get("/api/users", (req, res) => {
   res.send(users);
+});
+
+app.post("/api/users", (req, res) => {
+  if (req.body) {
+    let newUser = req.body;
+    users.push(newUser);
+    res.send(users);
+  } else {
+    res.status(404).send("Unable to process data");
+  }
 });
 
 app.get("/api/users/:id", (req, res) => {

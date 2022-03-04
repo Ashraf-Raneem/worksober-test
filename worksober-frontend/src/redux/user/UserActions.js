@@ -22,6 +22,7 @@ export const postUser = (formData) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: CREATE_USER,
+        payload: res.data,
       });
     })
     .catch((err) => {});
@@ -35,7 +36,6 @@ export const updateUser = (formData, id) => (dispatch) => {
       dispatch({
         type: UPDATE_USER,
       });
-      console.log(res.data);
     })
     .catch((err) => {});
 };

@@ -26,7 +26,17 @@ const NewUserForm = ({ toggle, postUser }) => {
   };
 
   const handleFormSubmit = (data) => {
-    console.log(data, img);
+    let reqObject = {
+      _id: Math.random(),
+      picture: img,
+      age: data.age,
+      name: data.name,
+      gender: data.gender,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+    };
+    postUser(reqObject);
   };
 
   const {

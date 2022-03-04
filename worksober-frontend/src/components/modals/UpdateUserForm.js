@@ -25,9 +25,7 @@ const UpdateUserForm = ({ toggle, postUser }) => {
     setMouse(false);
   };
 
-  const handleFormSubmit = (data) => {
-    console.log(data, img);
-  };
+  const handleFormSubmit = (data) => {};
 
   const {
     register,

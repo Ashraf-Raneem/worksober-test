@@ -16,11 +16,13 @@ export default function userReducer(state = INITIAL_STATE, action) {
     case CREATE_USER:
       return {
         ...state,
+        users: action.payload,
         loading: false,
       };
     case UPDATE_USER:
       return {
         ...state,
+        users: action.payload,
         loading: false,
       };
     case DELETE_USER:
