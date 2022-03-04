@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getUsers } from "../redux/user/UserActions";
 import { AiOutlinePlus } from "react-icons/ai";
 import NewUserForm from "./modals/NewUserForm";
+import { MdOutlineCancel } from "react-icons/md";
 
 const customStyles = {
   content: {
@@ -13,8 +14,9 @@ const customStyles = {
     right: "auto",
     bottom: "auto",
     marginRight: "-50%",
-    height: "590px",
-    width: "750px",
+    minHeight: "250px",
+    minWidth: "50%",
+    borderRadius: "25px",
     transform: "translate(-50%, -50%)",
   },
 };
@@ -49,7 +51,15 @@ const UserList = ({ getUsers, user }) => {
       <div className="user-list">{users && users.map((item) => <UserCard user={item} key={item._id} />)}</div>
 
       <Modal isOpen={isOpen} style={customStyles}>
-        <NewUserForm />
+        <div>
+          <div className="modal-header">
+            <h3>Add New Users</h3>
+            <MdOutlineCancel size={20} style={{ cursor: "pointer" }} onClick={toggle} />
+          </div>
+          <div className="modal-body">
+            <NewUserForm toggle={toggle} />
+          </div>
+        </div>
       </Modal>
     </div>
   );
