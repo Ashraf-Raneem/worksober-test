@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import UserCard from "./UserCard";
 import Modal from "react-modal";
+import NewUserForm from "./modals/NewUserForm";
 import { connect } from "react-redux";
 import { getUsers } from "../redux/user/UserActions";
 import { AiOutlinePlus } from "react-icons/ai";
-import NewUserForm from "./modals/NewUserForm";
 import { MdOutlineCancel } from "react-icons/md";
 
 const customStyles = {
