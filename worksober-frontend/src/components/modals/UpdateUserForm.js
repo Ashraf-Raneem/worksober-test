@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { connect } from "react-redux";
 import { updateUser } from "../../redux/user/UserActions";
@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 
 const UpdateUserForm = ({ toggle, user, updateUser }) => {
   const [img, setImg] = useState(user.picture);
-  const [formData, setFormData] = useState(user);
   const [mouse, setMouse] = useState(false);
 
   const onImageUpload = () => {
@@ -72,12 +71,7 @@ const UpdateUserForm = ({ toggle, user, updateUser }) => {
           <div className="col-sm-6">
             <div className="form-group">
               <label className="form-label">Name</label>
-              <input
-                type="text"
-                name="name"
-                defaultValue={formData.name}
-                {...register("name", { required: true })}
-              ></input>
+              <input type="text" name="name" defaultValue={user.name} {...register("name", { required: true })}></input>
               {errors.name && <p className="invalid">This field is required</p>}
             </div>
             <div className="form-group">
@@ -85,7 +79,7 @@ const UpdateUserForm = ({ toggle, user, updateUser }) => {
               <input
                 type="email"
                 name="email"
-                defaultValue={formData.email}
+                defaultValue={user.email}
                 {...register("email", { required: true })}
               ></input>
               {errors.email && <p className="invalid">This field is required</p>}
@@ -97,7 +91,7 @@ const UpdateUserForm = ({ toggle, user, updateUser }) => {
               <input
                 type="text"
                 name="gender"
-                defaultValue={formData.gender}
+                defaultValue={user.gender}
                 {...register("gender", { required: true })}
               ></input>
               {errors.gender && <p className="invalid">This field is required</p>}
@@ -106,12 +100,7 @@ const UpdateUserForm = ({ toggle, user, updateUser }) => {
           <div className="col-sm-6">
             <div className="form-group">
               <label className="form-label">Age</label>
-              <input
-                type="number"
-                name="age"
-                defaultValue={formData.age}
-                {...register("age", { required: true })}
-              ></input>
+              <input type="number" name="age" defaultValue={user.age} {...register("age", { required: true })}></input>
               {errors.age && <p className="invalid">This field is required</p>}
             </div>
           </div>
@@ -120,7 +109,7 @@ const UpdateUserForm = ({ toggle, user, updateUser }) => {
               <label className="form-label">Phone</label>
               <input
                 type="text"
-                defaultValue={formData.phone}
+                defaultValue={user.phone}
                 name="phone"
                 {...register("phone", { required: true })}
               ></input>
@@ -132,7 +121,7 @@ const UpdateUserForm = ({ toggle, user, updateUser }) => {
               <label className="form-label">Address</label>
               <input
                 type="text"
-                defaultValue={formData.address}
+                defaultValue={user.address}
                 name="address"
                 {...register("address", { required: true })}
               ></input>
@@ -141,10 +130,10 @@ const UpdateUserForm = ({ toggle, user, updateUser }) => {
           </div>
           <div className="col-sm-12">
             <div className="btn-group">
-              <button type="submit" className="primary-button">
+              <button type="submit" className="btn primary-btn">
                 <span>Update User</span>
               </button>
-              <button className="secondary-button" onClick={toggle}>
+              <button className="btn secondary-btn" onClick={toggle}>
                 <span>Cancel</span>
               </button>
             </div>

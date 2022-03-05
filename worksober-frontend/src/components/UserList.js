@@ -32,7 +32,7 @@ const UserList = ({ getUsers, user }) => {
     setIsOpen(!isOpen);
   };
 
-  const { users, loading } = user;
+  const { users } = user;
 
   return (
     <div className="block">
@@ -41,7 +41,7 @@ const UserList = ({ getUsers, user }) => {
           <h2>Club Management System</h2>
         </div>
         <div className="block-head-actions">
-          <button className="primary-button" onClick={toggle}>
+          <button className="btn primary-btn" onClick={toggle}>
             <AiOutlinePlus size={16} style={{ marginRight: "5px" }} />
             <span>New User</span>
           </button>
@@ -50,7 +50,7 @@ const UserList = ({ getUsers, user }) => {
 
       <div className="user-list">{users && users.map((item) => <UserCard user={item} key={item._id} />)}</div>
 
-      <Modal isOpen={isOpen} style={customStyles} ariaHideApp={false}>
+      <Modal closeTimeoutMS={200} isOpen={isOpen} style={customStyles} ariaHideApp={false}>
         <div>
           <div className="modal-header">
             <h3>Add New Users</h3>

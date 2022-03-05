@@ -28,6 +28,7 @@ export default function userReducer(state = INITIAL_STATE, action) {
     case DELETE_USER:
       return {
         ...state,
+        users: action.payload,
         loading: false,
       };
     case LOADING:

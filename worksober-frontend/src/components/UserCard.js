@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import Modal from "react-modal";
-import { MdCancel, MdUpdate, MdOutlineCancel } from "react-icons/md";
+import { MdUpdate, MdOutlineCancel } from "react-icons/md";
+import { BiTrash } from "react-icons/bi";
 import UpdateUserForm from "./modals/UpdateUserForm";
+import { deleteUser } from "../redux/user/UserActions";
+import { connect } from "react-redux";
 
-const UserCard = ({ user }) => {
+const UserCard = ({ user, deleteUser }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const customStyles = {
@@ -24,11 +27,13 @@ const UserCard = ({ user }) => {
     setIsOpen(!isOpen);
   };
 
+  console.log(user);
+
   return (
     <React.Fragment>
       <div className="user-card">
-        <p className="delete-icon">
-          <MdCancel size={22} />
+        <p className="delete-icon" onClick={() => deleteUser(user._id)}>
+          <BiTrash size={22} color="#df4759" />
         </p>
         <div className="user-card-img">
           <img className="user-avatar" src={user.picture} alt="user" />
@@ -52,7 +57,7 @@ const UserCard = ({ user }) => {
           </p>
         </div>
         <div>
-          <button className="primary-button" onClick={toggle}>
+          <button className="btn primary-btn" onClick={toggle}>
             <MdUpdate size={16} style={{ marginRight: "5px" }} />
             <span>Update</span>
           </button>
@@ -73,4 +78,4 @@ const UserCard = ({ user }) => {
   );
 };
 
-export default UserCard;
+export default connect(null, { deleteUser })(UserCard);

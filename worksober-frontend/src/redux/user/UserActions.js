@@ -55,6 +55,7 @@ export const deleteUser = (id) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: DELETE_USER,
+        payload: res.data,
       });
       toast.success("Successfully deleted club member");
     })

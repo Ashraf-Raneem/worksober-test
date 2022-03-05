@@ -31,7 +31,7 @@ app.post("/api/users", (req, res) => {
   }
 });
 
-// Updates user data,
+// Updates user data
 app.put("/api/users/:id", (req, res) => {
   if (req.body) {
     const userIndex = users.findIndex((el) => el._id === req.params.id);
@@ -43,6 +43,7 @@ app.put("/api/users/:id", (req, res) => {
   }
 });
 
+// Fetches users with id
 app.get("/api/users/:id", (req, res) => {
   const user = users.find((el) => el._id === req.params.id);
   if (!user) {
@@ -51,10 +52,11 @@ app.get("/api/users/:id", (req, res) => {
   res.send(user);
 });
 
+// Deletes a user
 app.delete("/api/users/:id", (req, res) => {
   const userIndex = users.findIndex((el) => el._id === req.params.id);
   if (!userIndex) {
-    res.status(404).send("No user was found with that id");
+    return res.status(404).send("No user was found with that id");
   }
   users = users.filter((el) => el._id !== req.params.id);
   res.send(users);
