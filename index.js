@@ -15,10 +15,12 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
+// Gets all the users
 app.get("/api/users", (req, res) => {
   res.send(users);
 });
 
+// Adds a new user
 app.post("/api/users", (req, res) => {
   if (req.body) {
     let newUser = req.body;
@@ -26,6 +28,18 @@ app.post("/api/users", (req, res) => {
     res.send(users);
   } else {
     res.status(404).send("Unable to process data");
+  }
+});
+
+// Updates user data,
+app.put("/api/users/:id", (req, res) => {
+  if (req.body) {
+    const userIndex = users.findIndex((el) => el._id === req.params.id);
+    if (!userIndex) {
+      res.status(404).send("No user was found to update");
+    }
+    users[userIndex] = req.body;
+    res.send(users);
   }
 });
 

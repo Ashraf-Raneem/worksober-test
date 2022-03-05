@@ -35,6 +35,7 @@ export const updateUser = (formData, id) => (dispatch) => {
     .then((res) => {
       dispatch({
         type: UPDATE_USER,
+        payload: res.data,
       });
     })
     .catch((err) => {});

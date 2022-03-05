@@ -52,7 +52,7 @@ const UserCard = ({ user }) => {
           </p>
         </div>
         <div>
-          <button className="primary-button">
+          <button className="primary-button" onClick={toggle}>
             <MdUpdate size={16} style={{ marginRight: "5px" }} />
             <span>Update</span>
           </button>
@@ -61,11 +61,11 @@ const UserCard = ({ user }) => {
       <Modal isOpen={isOpen} style={customStyles} ariaHideApp={false}>
         <div>
           <div className="modal-header">
-            <h3>Add New Users</h3>
+            <h3>Update User</h3>
             <MdOutlineCancel size={20} style={{ cursor: "pointer" }} onClick={toggle} />
           </div>
           <div className="modal-body">
-            <UpdateUserForm toggle={toggle} />
+            <UpdateUserForm user={user} toggle={toggle} />
           </div>
         </div>
       </Modal>

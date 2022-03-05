@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsFillCameraFill } from "react-icons/bs";
 import { connect } from "react-redux";
-import { postUser } from "../../redux/user/UserActions";
+import { updateUser } from "../../redux/user/UserActions";
 import { useForm } from "react-hook-form";
 
-const UpdateUserForm = ({ toggle, postUser }) => {
-  const [img, setImg] = useState();
+const UpdateUserForm = ({ toggle, user, updateUser }) => {
+  const [img, setImg] = useState(user.picture);
+  const [formData, setFormData] = useState(user);
   const [mouse, setMouse] = useState(false);
 
   const onImageUpload = () => {
@@ -25,7 +26,19 @@ const UpdateUserForm = ({ toggle, postUser }) => {
     setMouse(false);
   };
 
-  const handleFormSubmit = (data) => {};
+  const handleFormSubmit = (data) => {
+    let reqObject = {
+      _id: user._id,
+      picture: img,
+      age: data.age,
+      name: data.name,
+      gender: data.gender,
+      email: data.email,
+      phone: data.phone,
+      address: data.address,
+    };
+    updateUser(reqObject, user._id);
+  };
 
   const {
     register,
@@ -58,47 +71,77 @@ const UpdateUserForm = ({ toggle, postUser }) => {
           <div className="col-sm-6">
             <div className="form-group">
               <label className="form-label">Name</label>
-              <input type="text" name="name" {...register("name", { required: true })}></input>
+              <input
+                type="text"
+                name="name"
+                defaultValue={formData.name}
+                {...register("name", { required: true })}
+              ></input>
               {errors.name && <p className="invalid">This field is required</p>}
             </div>
             <div className="form-group">
               <label className="form-label">Email</label>
-              <input type="email" name="email" {...register("email", { required: true })}></input>
+              <input
+                type="email"
+                name="email"
+                defaultValue={formData.email}
+                {...register("email", { required: true })}
+              ></input>
               {errors.email && <p className="invalid">This field is required</p>}
             </div>
           </div>
           <div className="col-sm-6">
             <div className="form-group">
               <label className="form-label">Gender</label>
-              <input type="text" name="gender" {...register("gender", { required: true })}></input>
+              <input
+                type="text"
+                name="gender"
+                defaultValue={formData.gender}
+                {...register("gender", { required: true })}
+              ></input>
               {errors.gender && <p className="invalid">This field is required</p>}
             </div>
           </div>
           <div className="col-sm-6">
             <div className="form-group">
               <label className="form-label">Age</label>
-              <input type="number" name="age" {...register("age", { required: true })}></input>
+              <input
+                type="number"
+                name="age"
+                defaultValue={formData.age}
+                {...register("age", { required: true })}
+              ></input>
               {errors.age && <p className="invalid">This field is required</p>}
             </div>
           </div>
           <div className="col-sm-6">
             <div className="form-group">
               <label className="form-label">Phone</label>
-              <input type="text" name="phone" {...register("phone", { required: true })}></input>
+              <input
+                type="text"
+                defaultValue={formData.phone}
+                name="phone"
+                {...register("phone", { required: true })}
+              ></input>
               {errors.phone && <p className="invalid">This field is required</p>}
             </div>
           </div>
           <div className="col-sm-6">
             <div className="form-group">
               <label className="form-label">Address</label>
-              <input type="text" name="address" {...register("address", { required: true })}></input>
+              <input
+                type="text"
+                defaultValue={formData.address}
+                name="address"
+                {...register("address", { required: true })}
+              ></input>
               {errors.address && <p className="invalid">This field is required</p>}
             </div>
           </div>
           <div className="col-sm-12">
             <div className="btn-group">
               <button type="submit" className="primary-button">
-                <span>Add User</span>
+                <span>Update User</span>
               </button>
               <button className="secondary-button" onClick={toggle}>
                 <span>Cancel</span>
@@ -111,4 +154,4 @@ const UpdateUserForm = ({ toggle, postUser }) => {
   );
 };
 
-export default connect(null, { postUser })(UpdateUserForm);
+export default connect(null, { updateUser })(UpdateUserForm);
