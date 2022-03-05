@@ -38,6 +38,7 @@ const UpdateUserForm = ({ toggle, user, updateUser }) => {
       address: data.address,
     };
     updateUser(reqObject, user._id);
+    toggle();
   };
 
   const {

@@ -37,6 +37,7 @@ const NewUserForm = ({ toggle, postUser }) => {
       address: data.address,
     };
     postUser(reqObject);
+    toggle();
   };
 
   const {
