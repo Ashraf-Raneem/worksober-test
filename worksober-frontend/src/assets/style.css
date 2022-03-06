@@ -193,6 +193,10 @@ h6 {
   border-radius: 150px;
   border: 1px solid gray;
   background-color: #f0f2f5;
+  transition: all 0.3s;
+}
+.form-preview-img:hover {
+  opacity: 0.6;
 }
 
 .btn-block {
