@@ -69,6 +69,26 @@ const UserData = [
     phone: "+1 (893) 507-3470",
     address: "517 Devoe Street, Bakersville, California, 519",
   },
+  {
+    _id: "621e62e81e25feb09f83230d",
+    picture: "https://reqres.in/img/faces/1-image.jpg",
+    age: 32,
+    name: "Elmand Delgado",
+    gender: "male",
+    email: "delgado@nimon.com",
+    phone: "+1 (893) 507-3470",
+    address: "517 Devoe Street, Bakersville, California, 519",
+  },
+  {
+    _id: "621e62e81e25feb09f83230d",
+    picture: "https://reqres.in/img/faces/5-image.jpg",
+    age: 39,
+    name: "Sanchez Souza",
+    gender: "male",
+    email: "sanchez@nimon.com",
+    phone: "+1 (893) 507-3470",
+    address: "517 Devoe Street, Bakersville, California, 519",
+  },
 ];
 
 module.exports = UserData;

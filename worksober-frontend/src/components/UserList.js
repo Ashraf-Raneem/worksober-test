@@ -4,7 +4,7 @@ import Modal from "react-modal";
 import NewUserForm from "./modals/NewUserForm";
 import { connect } from "react-redux";
 import { getUsers } from "../redux/user/UserActions";
-import { AiOutlinePlus } from "react-icons/ai";
+import { TiPlus } from "react-icons/ti";
 import { MdOutlineCancel } from "react-icons/md";
 
 const customStyles = {
@@ -42,8 +42,8 @@ const UserList = ({ getUsers, user }) => {
         </div>
         <div className="block-head-actions">
           <button className="btn primary-btn" onClick={toggle}>
-            <AiOutlinePlus size={16} style={{ marginRight: "5px" }} />
-            <span>New User</span>
+            <TiPlus size={22} color="#ffffff" />
+            <span style={{ marginLeft: "5px" }}>New Member</span>
           </button>
         </div>
       </div>
@@ -53,7 +53,7 @@ const UserList = ({ getUsers, user }) => {
       <Modal closeTimeoutMS={200} isOpen={isOpen} style={customStyles} ariaHideApp={false}>
         <div>
           <div className="modal-header">
-            <h3>Add New Users</h3>
+            <h3>Add New Members</h3>
             <MdOutlineCancel size={20} style={{ cursor: "pointer" }} onClick={toggle} />
           </div>
           <div className="modal-body">
