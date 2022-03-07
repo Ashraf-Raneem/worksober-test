@@ -3,10 +3,10 @@ import Modal from "react-modal";
 import { MdUpdate, MdOutlineCancel } from "react-icons/md";
 import { AiFillEye } from "react-icons/ai";
 import { BiTrash } from "react-icons/bi";
-import UpdateUserForm from "./modals/UpdateUserForm";
-import { deleteUser } from "../redux/user/UserActions";
+import UpdateUserForm from "../modals/UpdateUserForm";
+import { deleteUser } from "../../redux/user/UserActions";
 import { connect } from "react-redux";
-import UserDetails from "./modals/UserDetails";
+import UserDetails from "../modals/UserDetails";
 
 const UserCard = ({ user, deleteUser }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -52,7 +52,7 @@ const UserCard = ({ user, deleteUser }) => {
     <React.Fragment>
       <div className="user-card">
         <p className="delete-icon" onClick={() => deleteUser(user._id)}>
-          <BiTrash size={22} color="#df4759" />
+          <BiTrash size={22} color="#df4759" style={{ cursor: "pointer" }} />
         </p>
         <div className="user-card-img">
           <img className="user-avatar" src={user.picture} alt="user" />

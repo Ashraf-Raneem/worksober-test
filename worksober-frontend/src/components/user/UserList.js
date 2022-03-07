@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import UserCard from "./UserCard";
 import Modal from "react-modal";
-import NewUserForm from "./modals/NewUserForm";
+import NewUserForm from "../modals/NewUserForm";
 import { connect } from "react-redux";
-import { getUsers } from "../redux/user/UserActions";
+import { getUsers } from "../../redux/user/UserActions";
 import { TiPlus } from "react-icons/ti";
 import { MdOutlineCancel } from "react-icons/md";
+import PaginationComponent from "../pagination/PaginationComponent";
 
 const customStyles = {
   content: {
@@ -23,16 +24,26 @@ const customStyles = {
 
 const UserList = ({ getUsers, user }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemPerPage] = useState(6);
 
   useEffect(() => {
     getUsers();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
   const { users } = user;
+
+  // Get current list, pagination
+  const indexOfLastItem = currentPage * itemPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemPerPage;
+  const currentItems = users && users.slice(indexOfFirstItem, indexOfLastItem);
+
+  // Change Page
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <div className="block">
@@ -48,8 +59,27 @@ const UserList = ({ getUsers, user }) => {
         </div>
       </div>
 
-      <div className="user-list">{users && users.map((item) => <UserCard user={item} key={item._id} />)}</div>
-
+      {users && (
+        <React.Fragment>
+          <div className="user-list">
+            {currentItems.map((item) => (
+              <UserCard user={item} key={item._id} />
+            ))}
+          </div>
+          {currentItems.length > 0 ? (
+            <PaginationComponent
+              itemPerPage={itemPerPage}
+              totalItems={users.length}
+              paginate={paginate}
+              currentPage={currentPage}
+            />
+          ) : (
+            <div className="text-center">
+              <span className="text-silent">No data found</span>
+            </div>
+          )}
+        </React.Fragment>
+      )}
       <Modal closeTimeoutMS={200} isOpen={isOpen} style={customStyles} ariaHideApp={false}>
         <div>
           <div className="modal-header">

@@ -111,7 +111,7 @@ const NewUserForm = ({ toggle, postUser }) => {
           <div className="col-sm-12">
             <div className="btn-group">
               <button type="submit" className="btn primary-btn">
-                <span>Add User</span>
+                <span>Add Member</span>
               </button>
               <button className="btn secondary-btn" onClick={toggle}>
                 <span>Cancel</span>

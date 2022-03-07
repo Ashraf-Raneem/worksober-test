@@ -89,6 +89,36 @@ const UserData = [
     phone: "+1 (893) 507-3470",
     address: "517 Devoe Street, Bakersville, California, 519",
   },
+  {
+    _id: "621e89cghrthsdrtzdsg83230d",
+    picture: "https://reqres.in/img/faces/6-image.jpg",
+    age: 46,
+    name: "Esteban Guerrero",
+    gender: "male",
+    email: "estaban21@nimon.com",
+    phone: "+1 (893) 507-3470",
+    address: "517 Kindred Street, Bakersville, California, 519",
+  },
+  {
+    _id: "621e12sdgaesrhmukyhkfg83230d",
+    picture: "https://reqres.in/img/faces/11-image.jpg",
+    age: 30,
+    name: "Jack Kwawo",
+    gender: "male",
+    email: "jack@nimon.com",
+    phone: "+1 (893) 507-3470",
+    address: "407 Devoe Street, Bakersville, California, 519",
+  },
+  {
+    _id: "621ezfgdryzbvse0d",
+    picture: "https://reqres.in/img/faces/12-image.jpg",
+    age: 22,
+    name: "Alissa Beat",
+    gender: "female",
+    email: "alissa@nimon.com",
+    phone: "+1 (893) 507-3470",
+    address: "517 Devoe Street, Hollywood, California, 519",
+  },
 ];
 
 module.exports = UserData;

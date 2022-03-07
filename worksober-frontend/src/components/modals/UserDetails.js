@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserDetails = ({ user, toggle }) => {
+const UserDetails = ({ user }) => {
   return (
     <div className="user-details-container">
       <div className="user-details-body">

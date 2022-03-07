@@ -86,7 +86,6 @@ h6 {
   padding: 15px;
   font-size: 18px;
   text-align: center;
-  cursor: pointer;
   position: relative;
   top: 0;
   transition: top ease 0.3s;
@@ -271,6 +270,28 @@ h6 {
   padding: 18px;
 }
 
+/* Pagination */
+.pagination-container {
+  display: flex;
+  flex-direction: row;
+  margin: 50px 100px;
+}
+.pagination-item {
+  margin: 0px 10px;
+  height: 10px;
+  padding: 7px;
+  width: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.pagination-item + .active {
+  background: #673ab7;
+  border-radius: 50px;
+  color: white;
+}
 /*media queries*/
 
 @media (min-width: 320px) {
@@ -295,6 +316,18 @@ h6 {
     display: grid;
     grid-template-columns: auto;
     justify-content: space-evenly;
+  }
+  .pagination-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 50px 100px;
+  }
+  .pagination-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 50px 100px;
   }
 }
 
