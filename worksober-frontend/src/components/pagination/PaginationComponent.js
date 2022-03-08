@@ -9,11 +9,19 @@ const PaginationComponent = ({ itemPerPage, totalItems, paginate, currentPage })
   }
 
   const nextPage = () => {
-    paginate(currentPage + 1);
+    if (currentPage === pageNumbers[pageNumbers.length - 1]) {
+      paginate(1);
+    } else {
+      paginate(currentPage + 1);
+    }
   };
 
   const prevPage = () => {
-    paginate(currentPage - 1);
+    if (currentPage === 1) {
+      paginate(pageNumbers[pageNumbers.length - 1]);
+    } else {
+      paginate(currentPage - 1);
+    }
   };
 
   return (
