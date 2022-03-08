@@ -5,7 +5,7 @@
 1.  Make sure Node and npm package manager is installed, please check
     the version by the command **_node -v_**
 
-2.  Install Dependencies
+2.  Visit the root folder and install Dependencies
 
     a. **_npm install or yarn install_**
 
