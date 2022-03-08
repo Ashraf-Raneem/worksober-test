@@ -1,6 +1,5 @@
 var express = require("express");
 var path = require("path");
-var UserData = require("./config/Data");
 var app = express();
 
 var cors = require("cors");
@@ -8,13 +7,16 @@ var cors = require("cors");
 var port = 3000;
 var app = express();
 app.use(express.json());
-let users = UserData;
 
 app.use(cors());
 
+var UserData = require("./config/Data");
+let users = UserData;
+
 // app.get("/", (req, res) => {
-//   res.send("Hello World!");
+  //   res.send("Hello World!");
 // });
+
 
 // Gets all the users
 app.get("/api/users", (req, res) => {
@@ -65,15 +67,18 @@ app.delete("/api/users/:id", (req, res) => {
 
 // Have Node serve the files for our built React app
 app.use(
-  express.static(path.join(__dirname, ".", "worksober-frontend", "build"))
+  express.static(path.join(__dirname, ".","worksober-frontend","build"))
 );
+app.use(express.static("public"));
 
 // All other GET requests not handled before will return our React app
 app.get("*", (req, res) => {
   res.sendFile(
-    path.resolve(__dirname, ".", "worksober-frontend", "build", "index.html")
+    path.join(__dirname, ".", "worksober-frontend", "build", "index.html")
   );
 });
+
+
 
 app.listen(port, () => {
   console.log(`Backend app listening on port ${port}`);
